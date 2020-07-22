@@ -1,19 +1,49 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <h1>The Cup Store</h1>
+
+    <product v-for="product in products" :key="product.id" :product="product" />
+
+    <Cart></Cart>
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Product from "./components/Product";
+import Cart from "./components/Cart";
+import "./assets/styles.css";
 
 export default {
-  name: 'App',
+  name: "App",
+  data() {
+    return {
+      products: [
+        {
+          id: 120,
+          name: "Colorful Cups",
+          price: 999,
+          image: require("./assets/images/cups1.jpg"),
+        },
+        {
+          id: 121,
+          name: "Coffee & Home",
+          price: 1499,
+          image: require("./assets/images/cups2.jpg"),
+        },
+        {
+          id: 123,
+          name: "Old Red Friend",
+          price: 1999,
+          image: require("./assets/images/cups3.jpg"),
+        },
+      ],
+    };
+  },
   components: {
-    HelloWorld
-  }
-}
+    Product,
+    Cart,
+  },
+};
 </script>
 
 <style>
